@@ -58,7 +58,7 @@ def prompt_ai(messages, nested_calls=0):
 
     # First, prompt the AI with the latest user message
     tools = [create_asana_task]
-    asana_chatbot = ChatOpenAI(model=model) if "gpt" in model.lower() else ChatAnthropic(model=model)
+    asana_chatbot = ChatOpenAI(model=model, base_url="https://generativelanguage.googleapis.com/v1beta/openai/") 
     asana_chatbot_with_tools = asana_chatbot.bind_tools(tools)
 
     ai_response = asana_chatbot_with_tools.invoke(messages)
